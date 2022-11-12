@@ -1,12 +1,19 @@
 sampleChoices = ['rock', 'paper', 'scissors'];
 
+const playerSelection = prompt('Rock, Paper, or Scissors?').toLowerCase();
+
+let result = '';
+let computerSelection = '';
+let playerScore = 0;
+let computerScore = 0;
+
+
+
+
 function getComputerChoice() {
   return sampleChoices[Math.floor(Math.random() * sampleChoices.length)];
 }
 
-const playerSelection = prompt('Rock, Paper, or Scissors?').toLowerCase();
-let result = '';
-let computerSelection = '';
 function playRound(playerSelection, computerSelection) {
     computerSelection = getComputerChoice();
     if (playerSelection === computerSelection) {
@@ -28,10 +35,6 @@ function playRound(playerSelection, computerSelection) {
     }  
 }
 
-
-let playerScore = 0;
-let computerScore = 0;
-
 function game(playerSelection, computerSelection) {
     for (let i = 0; i < 5; i++) {
         playRound(playerSelection, computerSelection);
@@ -44,12 +47,19 @@ function game(playerSelection, computerSelection) {
     }
 }
 
+function finalResults () {
+    if (playerScore > computerScore) {
+        return 'You Win!';
+    } else if (playerScore < computerScore) {
+        return 'You Lose!';
+    } else {
+        return 'Tie';
+    }
+}
+
+
+
 game(playerSelection, computerSelection);
 console.log(`Player Score: ${playerScore}`);
 console.log(`Computer Score: ${computerScore}`);
-
-/* console.log('player: ' + playerChoice);
-console.log('computer: ' + computerChoice);
-console.log(playRound(playerSelection, computerSelection));
-console.log('player score: ' + playerScore);
-console.log('computer score: ' + computerScore); */
+console.log('Final Results: ' + finalResults());
