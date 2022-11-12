@@ -45,6 +45,8 @@ function game(playerSelection, computerSelection) {
 }
 
 game(playerSelection, computerSelection);
+console.log(`Player Score: ${playerScore}`);
+console.log(`Computer Score: ${computerScore}`);
 
 /* console.log('player: ' + playerChoice);
 console.log('computer: ' + computerChoice);
