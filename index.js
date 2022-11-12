@@ -1,13 +1,9 @@
 sampleChoices = ['rock', 'paper', 'scissors'];
-
 const playerSelection = prompt('Rock, Paper, or Scissors?').toLowerCase();
-
 let result = '';
 let computerSelection = '';
 let playerScore = 0;
 let computerScore = 0;
-
-
 
 
 function getComputerChoice() {
@@ -58,7 +54,7 @@ function finalResults () {
 }
 
 
-
+//test the code
 game(playerSelection, computerSelection);
 console.log(`Player Score: ${playerScore}`);
 console.log(`Computer Score: ${computerScore}`);
