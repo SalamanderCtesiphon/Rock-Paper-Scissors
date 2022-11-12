@@ -4,7 +4,7 @@ function getComputerChoice() {
   return sampleChoices[Math.floor(Math.random() * sampleChoices.length)];
 }
 
-const playerSelection = 'rock';
+const playerSelection = prompt('Rock, Paper, or Scissors?').toLowerCase();
 let result = '';
 let computerSelection = '';
 function playRound(playerSelection, computerSelection) {
