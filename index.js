@@ -1,5 +1,5 @@
 sampleChoices = ['rock', 'paper', 'scissors'];
-const playerSelection = prompt('Rock, Paper, or Scissors?').toLowerCase();
+// const playerSelection = prompt('Rock, Paper, or Scissors?').toLowerCase();
 let result = '';
 let computerSelection = '';
 let playerScore = 0;
@@ -11,7 +11,6 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    computerSelection = getComputerChoice();
     if (playerSelection === computerSelection) {
         return result = 'Tie';
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
@@ -31,7 +30,7 @@ function playRound(playerSelection, computerSelection) {
     }  
 }
 
-function game(playerSelection, computerSelection) {
+/* function game(playerSelection, computerSelection) {
     for (let i = 0; i < 5; i++) {
         playRound(playerSelection, computerSelection);
         console.log(result);
@@ -41,7 +40,7 @@ function game(playerSelection, computerSelection) {
             computerScore++;
         }
     }
-}
+} */
 
 function finalResults () {
     if (playerScore > computerScore) {
@@ -55,7 +54,50 @@ function finalResults () {
 
 
 //test the code
-game(playerSelection, computerSelection);
+/* game(playerSelection, computerSelection);
 console.log(`Player Score: ${playerScore}`);
 console.log(`Computer Score: ${computerScore}`);
-console.log('Final Results: ' + finalResults());
+console.log('Final Results: ' + finalResults()); */
+
+
+// Path: index.html
+const results = document.querySelector('.results');
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+
+rock.addEventListener('click', () => {
+    playerSelection = 'rock';
+    playerChoice.textContent = 'You chose: ' + playerSelection;
+    computerSelection = getComputerChoice();
+    computerChoice.textContent = 'Computer chose: ' + computerSelection;
+    playRound(playerSelection, computerSelection);
+    results.textContent = result;
+});
+
+paper.addEventListener('click', () => {
+    playerSelection = 'paper';
+    playerChoice.textContent = 'You chose: ' + playerSelection;
+    computerSelection = getComputerChoice();
+    computerChoice.textContent = 'Computer chose: ' + computerSelection;
+    playRound(playerSelection, computerSelection);
+    results.textContent = result;
+});
+
+scissors.addEventListener('click', () => {
+    playerSelection = 'scissors';
+    playerChoice.textContent = 'You chose: ' + playerSelection;
+    computerSelection = getComputerChoice();
+    computerChoice.textContent = 'Computer chose: ' + computerSelection;
+    playRound(playerSelection, computerSelection);
+    results.textContent = result;
+});
+
+const playerChoice = document.querySelector('.playerChoice');
+const computerChoice = document.querySelector('.computerChoice');
+
+playerChoice.createElement('p');
+computerChoice.createElement('p');
+
+
+
