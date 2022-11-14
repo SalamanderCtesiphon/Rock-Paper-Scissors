@@ -124,8 +124,6 @@ function playOnce(e) {
     }
     if (playerScore === 5 || computerScore === 5) {
         results.textContent = finalResults();
-        playerScore = 0;
-        computerScore = 0;
         playerResults.textContent = "Player Score: " + playerScore;
         computerResults.textContent = "Computer Score: " + computerScore;
         finalWinner.textContent = 'Final Winner: ' + finalResults();
