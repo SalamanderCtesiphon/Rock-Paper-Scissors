@@ -66,38 +66,73 @@ const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 
-rock.addEventListener('click', () => {
+rock.addEventListener('click', playRock);
+
+function playRock(e) {
     playerSelection = 'rock';
-    playerChoice.textContent = 'You chose: ' + playerSelection;
+    playerChoice.textContent = 'Player chooses: ' + playerSelection;
     computerSelection = getComputerChoice();
-    computerChoice.textContent = 'Computer chose: ' + computerSelection;
-    playRound(playerSelection, computerSelection);
-    results.textContent = result;
-});
+    computerChoice.textContent = 'Computer chooses: ' + computerSelection;
+    e.stopPropagation();
+}
 
-paper.addEventListener('click', () => {
+paper.addEventListener('click', playPaper);
+
+function playPaper(e) {
     playerSelection = 'paper';
-    playerChoice.textContent = 'You chose: ' + playerSelection;
+    playerChoice.textContent = 'Player chooses: ' + playerSelection;
     computerSelection = getComputerChoice();
-    computerChoice.textContent = 'Computer chose: ' + computerSelection;
-    playRound(playerSelection, computerSelection);
-    results.textContent = result;
-});
+    computerChoice.textContent = 'Computer chooses: ' + computerSelection;
+    e.stopPropagation();
+}
 
-scissors.addEventListener('click', () => {
+scissors.addEventListener('click', playScissors);
+
+function playScissors(e) {
     playerSelection = 'scissors';
-    playerChoice.textContent = 'You chose: ' + playerSelection;
+    playerChoice.textContent = 'Player chooses: ' + playerSelection;
     computerSelection = getComputerChoice();
-    computerChoice.textContent = 'Computer chose: ' + computerSelection;
-    playRound(playerSelection, computerSelection);
-    results.textContent = result;
-});
+    computerChoice.textContent = 'Computer chooses: ' + computerSelection;
+    e.stopPropagation();
+}
 
 const playerChoice = document.querySelector('.playerChoice');
 const computerChoice = document.querySelector('.computerChoice');
 
-playerChoice.createElement('p');
-computerChoice.createElement('p');
+
+const playGame = document.querySelector('.playGame');
+
+playGame.addEventListener('click', playOnce);
 
 
+// play until 5 wins
 
+const playerResults = document.querySelector('.playerScore');
+const computerResults = document.querySelector('.computerScore');
+const finalWinner = document.querySelector('.finalWinner');
+
+function playOnce(e) {
+    playRound(playerSelection, computerSelection);
+    results.textContent = result;
+    if ( result === 'You Win! Rock beats Scissors' || result === 'You Win! Paper beats Rock' || result === 'You Win! Scissors beats Paper') {
+        playerScore++;
+        playerResults.textContent = "Player Score: " + playerScore;
+
+    } else if ( result === 'You Lose! Paper beats Rock' || result === 'You Lose! Scissors beats Paper' || result === 'You Lose! Rock beats Scissors') {
+        computerScore++;
+        computerResults.textContent = "Computer Score: " + computerScore;
+    }
+    if (playerScore === 5 || computerScore === 5) {
+        results.textContent = finalResults();
+        playerScore = 0;
+        computerScore = 0;
+        playerResults.textContent = "Player Score: " + playerScore;
+        computerResults.textContent = "Computer Score: " + computerScore;
+        finalWinner.textContent = 'Final Winner: ' + finalResults();
+
+    }
+    e.stopPropagation();
+}
+
+
+   
